@@ -294,6 +294,7 @@
 
     <button class="reward-button" onclick="showRewardedAd()">Watch Ad & Earn</button>
     <button class="reward-button" onclick="toggleAutoAds()" id="auto-watch">Auto Watch: OFF</button>
+    <button class="reward-button clear-button" onclick="clearData()">Clear Data</button>
 
     <!-- Bottom Navigation -->
     <div class="bottom-nav">
@@ -391,6 +392,15 @@
                 button.textContent = "Auto Watch: ON";
             }
         }
+
+	    //Clear Data
+	    function clearData() {
+            localStorage.removeItem("rewardCount");
+            localStorage.removeItem("balance");
+            document.getElementById("reward-count").innerText = "0";
+            document.getElementById("balance").innerText = "0.00";
+            alert("Data Cleared Successfully!");
+         }
     </script>
 
 </body>
