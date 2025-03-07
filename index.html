@@ -294,37 +294,37 @@
 	// Obnoví stránku
 	document.getElementById('home-button').addEventListener('click', function() {
         location.reload(); 
-    });
+        });
 
 
         // Funkcia na skrytie všetkých sekcií
-    function hideAllSections() {
-        document.getElementById('withdraw-section').style.display = 'none';
-        document.getElementById('info-section').style.display = 'none';
-	document.getElementById('confirmation-message').style.display = 'none'; // Skryje správu
-    }
-
-    // Info button click handler
-    document.getElementById('info-button').addEventListener('click', function() {
-        hideAllSections();
-        var infoSection = document.getElementById('info-section');
-        if (infoSection.style.display === 'none') {
-            infoSection.style.display = 'block'; // Zobraziť Info sekciu
+        function hideAllSections() {
+        	document.getElementById('withdraw-section').style.display = 'none';
+        	document.getElementById('info-section').style.display = 'none';
+		document.getElementById('confirmation-message').style.display = 'none'; // Skryje správu
         }
-    });
 
-    // Withdraw button click handler
-    document.getElementById('withdraw-button').addEventListener('click', function() {
-        hideAllSections();
-        var withdrawSection = document.getElementById('withdraw-section');
-        if (withdrawSection.style.display === 'none') {
-            withdrawSection.style.display = 'block'; // Zobraziť Withdraw sekciu
-        }
-    });
+    	// Info button click handler
+    	document.getElementById('info-button').addEventListener('click', function() {
+        	hideAllSections();
+        	var infoSection = document.getElementById('info-section');
+        		if (infoSection.style.display === 'none') {
+            		infoSection.style.display = 'block'; // Zobraziť Info sekciu
+        	}
+    	});
 
-    // Submit button click handler (pre Withdraw)
-    document.getElementById('submit-withdraw').addEventListener('click', function(event) {
-        event.preventDefault(); // Zabraňuje odoslaniu formulára
+    	// Withdraw button click handler
+    	document.getElementById('withdraw-button').addEventListener('click', function() {
+        	hideAllSections();
+        	var withdrawSection = document.getElementById('withdraw-section');
+        		if (withdrawSection.style.display === 'none') {
+            		withdrawSection.style.display = 'block'; // Zobraziť Withdraw sekciu
+        		}
+    		});
+
+    	// Submit button click handler (pre Withdraw)
+    	document.getElementById('submit-withdraw').addEventListener('click', function(event) {
+        	event.preventDefault(); // Zabraňuje odoslaniu formulára
 
         // Skrytie Withdraw sekcie
         document.getElementById('withdraw-section').style.display = 'none';
@@ -332,7 +332,7 @@
         // Zobrazenie potvrdzovacej správy
         var confirmationMessage = document.getElementById('confirmation-message');
         confirmationMessage.style.display = 'block';
-    });
+    	});
 	
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -352,13 +352,33 @@
 
         
 
-        function showRewardedAd() {
-            alert("Ad Completed! You Earned $0.10!");
-            let balanceElem = document.getElementById("balance");
-            let currentBalance = parseFloat(balanceElem.innerText) || 0;
-            balanceElem.innerText = (currentBalance + 0.10).toFixed(2);
-        }
+        // Load Saved Data
+        let rewardCount = parseInt(localStorage.getItem('rewardCount')) || 0;  
+        let balance = parseFloat(localStorage.getItem('balance')) || 0.00;  
 
+        document.getElementById('reward-count').textContent = rewardCount;
+        document.getElementById('balance').textContent = balance.toFixed(2);
+
+        function showRewardedAd() {
+            if (typeof show_9034072 === 'function') {
+                show_9034072().then(() => {
+                    rewardCount += 1;  
+                    balance += 0.01;  
+
+                    localStorage.setItem('rewardCount', rewardCount);
+                    localStorage.setItem('balance', balance.toFixed(2));
+
+                    document.getElementById('reward-count').textContent = rewardCount;
+                    document.getElementById('balance').textContent = balance.toFixed(2);
+
+                    //alert("Ad Completed! You Earned $0.10!");
+                }).catch(error => {
+                    console.error("Ad failed to load or display:", error);
+                });
+            } else {
+                alert("Ad is not ready yet. Try again later.");
+            }
+        }
 	// Create Floating Bubbles
         function createBubbles() {
             const container = document.querySelector('.bubble-container');
