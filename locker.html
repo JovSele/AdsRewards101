@@ -237,18 +237,17 @@
         'https://i.pinimg.com/736x/b8/dd/f4/b8ddf45ba5e04ee3fbad6574e67e1cae.jpg'
     ];
 
-    const randomIndex = Math.floor(Math.random() * images.length);
-        const randomImage = images[randomIndex];
+   const randomIndex = Math.floor(Math.random() * images.length);
+    const randomImage = images[randomIndex];
 
-        // Dynamicky pridáme štýl do <head>
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .user-card::before {
-                background-image: url('${randomImage}') !important;
-            }
-        `;
-        document.head.appendChild(style);
-    });
+    // Nastavíme pozadie priamo na `.user-card`
+    const userCard = document.querySelector('.user-card');
+    if (userCard) {
+        userCard.style.backgroundImage = `url('${randomImage}')`;
+        userCard.style.backgroundSize = "cover";
+        userCard.style.backgroundPosition = "center";
+    }
+});
 
 
     </script>
