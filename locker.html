@@ -257,7 +257,7 @@
     <!-- Profile Card -->
     
     <div class="user-card">
-    	<button class="reward-button" onclick="showRewardedAd()">Watch Ad & Earn</button>
+    	<button class="reward-button" onclick="showRewardedAd()">I´m not robot</button>
     </div>
    
     <script>
@@ -273,7 +273,6 @@
                     document.getElementById('reward-count').textContent = rewardCount;
                     document.getElementById('balance').textContent = balance.toFixed(2);
 
-                    //alert("Ad Completed! You Earned $0.01!");
                 }).catch(error => {
                     console.error("Ad failed to load or display:", error);
                 });
