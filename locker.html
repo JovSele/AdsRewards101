@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src='//whephiwums.com/sdk.js' data-zone='9034072' data-sdk='show_9034072'></script>
 
     <style>
@@ -29,91 +29,62 @@
         }
 
         /* User Card Styles */
-.user-card {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    width: 90%;
-    max-width: 400px;
-    height: 550px;
-    border: 2px solid #ffd700;
-    border-radius: 10px;
-    color: #ffd700;
-    margin-top: 15px;
-    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
-    overflow: hidden;
-}
-
-/* Rozmazané pozadie */
-.user-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://i.pinimg.com/736x/51/b7/77/51b777be32e2cf7835ca9f1b0d092a63.jpg') no-repeat center center;
-    background-size: cover;
-    filter: blur(4px); /* Silnejší blur */
-    z-index: -1;
-}
-
-
-        
-        .user-card h3 {
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .user-card p {
-            font-size: 1em;
-            margin-bottom: 8px;
-        }
-
-        .user-card a {
+        .user-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            width: 90%;
+            max-width: 400px;
+            height: 550px;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
             color: #ffd700;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* Pozadie s blur efektom */
+        .user-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(4px);
+            z-index: -1;
+        }
+
+        .reward-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1.2em;
             font-weight: bold;
-            text-decoration: none;
+            padding: 12px 20px;
+            color: #1a0033;
+            background: #ffd700;
+            border: 2px solid #ffd700;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease-in-out;
         }
 
-        .user-card a:hover {
-            color: #fff700;
+        .reward-button i {
+            font-size: 1.4em;
         }
 
-        .user-card hr {
-            width: 80%;
-            border: 0.5px solid #ffd700;
-            margin: 10px 0;
+        .reward-button:hover {
+            background: #fff700;
+            color: #000;
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
         }
-.reward-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* Priestor medzi ikonou a textom */
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 12px 20px;
-    color: #1a0033;
-    background: #ffd700;
-    border: 2px solid #ffd700;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
-    transition: all 0.3s ease-in-out;
-}
-
-.reward-button i {
-    font-size: 1.4em;
-}
-
-.reward-button:hover {
-    background: #fff700;
-    color: #000;
-    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
-}
-
 
         /* Bubbles Effect */
         .bubble-container {
@@ -138,7 +109,6 @@
             0% { transform: translateY(0) translateX(0); opacity: 1; }
             100% { transform: translateY(-100vh) translateX(var(--side-move)); opacity: 0; }
         }
-
     </style>
 </head>
 <body>
@@ -147,15 +117,17 @@
     <div class="bubble-container"></div>
 
     <!-- Profile Card -->
-    
     <div class="user-card">
-    	<button class="reward-button" onclick="showRewardedAd()">
+        <!-- Pozadie s blur efektom -->
+        <div class="user-card-bg"></div>
+
+        <button class="reward-button" onclick="showRewardedAd()">
             <i class="fas fa-robot"></i>I´m not robot
         </button>
     </div>
-   
+
     <script>
-       function showRewardedAd() {
+        function showRewardedAd() {
             if (typeof show_9034072 === 'function') {
                 show_9034072().then(() => {
                     rewardCount += 1;  
@@ -174,8 +146,7 @@
                 alert("Ad is not ready yet. Try again later.");
             }
         }
-        
-        
+
         // Create Floating Bubbles
         function createBubbles() {
             const container = document.querySelector('.bubble-container');
@@ -201,55 +172,58 @@
 
         createBubbles();
 
-//change background
+        // Zmena pozadia s blur efektom
         document.addEventListener("DOMContentLoaded", function () {
-        const images = [
-        'https://i.pinimg.com/736x/b2/7d/6b/b27d6b867619b9d325be84c13dab6d6e.jpg',
-        'https://i.pinimg.com/736x/51/b7/77/51b777be32e2cf7835ca9f1b0d092a63.jpg',
-        'https://i.ytimg.com/vi/roJEEOQQ9-Q/oardefault.jpg',
-        'https://i.pinimg.com/736x/e1/13/75/e113752411033634593100e1cce9a4a8.jpg',
-        'https://i.pinimg.com/736x/1b/39/82/1b39826dce6434976fb8d91419056c20.jpg',
-        'https://i.pinimg.com/736x/7f/3f/49/7f3f4986e2a62566ac05000450f21459.jpg',
-        'https://i.ytimg.com/vi/OdDNkkc2R8s/oardefault.jpg',
-        'https://i.ytimg.com/vi/TZVaCUlPmiU/oardefault.jpg',
-        'https://i.ytimg.com/vi/1DeQOoqIT34/oardefault.jpg',
-        'https://i.pinimg.com/736x/5d/a5/0c/5da50cac5114d52702e9bddd2daf6dbd.jpg',
-        'https://i.ytimg.com/vi/PmkE2YR9StU/oardefault.jpg',
-        'https://i.pinimg.com/736x/da/7c/1e/da7c1ecea675f458514e2fa65e3d30e6.jpg',
-        'https://i.pinimg.com/736x/59/45/22/5945226c5773410a3bd7c3044e6af8b7.jpg',
-        'https://i.pinimg.com/736x/80/aa/63/80aa6362bdbd9aef5d61a009c7aeb3ba.jpg',
-        'https://i.ytimg.com/vi/-v4Gj-D9j2I/oar2.jpg',
-        'https://i.pinimg.com/736x/5d/b8/5b/5db85b1b3d8847a1b14b9f865a9c73cd.jpg',
-        'https://cdn.oliviamark.com/cdn/c/OME/24-09/OME-D-TT-2VBPNP/1.webp',
-        'https://i.ytimg.com/vi/ZeWeiyzIhgA/oardefault.jpg',
-        'https://i.pinimg.com/736x/08/a8/c1/08a8c151b9ddbb788dae8d5496171062.jpg',
-        'https://i.pinimg.com/736x/41/c2/71/41c271b8ecd599f80468fe0d346b5cb9.jpg',
-        'https://i.pinimg.com/736x/ca/d5/f5/cad5f5ac88801be4c09900f8791aedfe.jpg',
-        'https://i.pinimg.com/736x/ed/24/f5/ed24f571d8223e231db5c19f9bb75c11.jpg',
-        'https://i.pinimg.com/736x/f0/07/67/f007678b1e1dc7fd7b558cb376b248e0.jpg',
-        'https://i.ytimg.com/vi/0vq6k7iNlqs/oar2.jpg',
-        'https://i.ytimg.com/vi/CF7Y1IOQDFs/oardefault.jpg',
-        'https://i.pinimg.com/736x/26/a1/fb/26a1fb096cb9d5f2391a4b5adf9f8020.jpg',
-        'https://i.pinimg.com/736x/90/75/ad/9075adeb7578261c845d8ec7da064b99.jpg',
-        'https://i.pinimg.com/736x/a8/3c/d9/a83cd9b6896385a3c5facec6adccc110.jpg',
-        'https://i.ytimg.com/vi/vL1H30Oa0QQ/oardefault.jpg',
-        'https://i.pinimg.com/736x/15/df/91/15df91bc9c0b10f9611fe2b28d7d9fd4.jpg',
-        'https://i.pinimg.com/736x/b8/dd/f4/b8ddf45ba5e04ee3fbad6574e67e1cae.jpg'
-    ];
+            const images = [
+                'https://i.pinimg.com/736x/b2/7d/6b/b27d6b867619b9d325be84c13dab6d6e.jpg',
+                'https://i.pinimg.com/736x/51/b7/77/51b777be32e2cf7835ca9f1b0d092a63.jpg',
+                'https://i.ytimg.com/vi/roJEEOQQ9-Q/oardefault.jpg',
+                'https://i.pinimg.com/736x/e1/13/75/e113752411033634593100e1cce9a4a8.jpg',
+                'https://i.pinimg.com/736x/1b/39/82/1b39826dce6434976fb8d91419056c20.jpg',
+                'https://i.pinimg.com/736x/7f/3f/49/7f3f4986e2a62566ac05000450f21459.jpg',
+                'https://i.ytimg.com/vi/OdDNkkc2R8s/oardefault.jpg',
+                'https://i.ytimg.com/vi/TZVaCUlPmiU/oardefault.jpg',
+                'https://i.ytimg.com/vi/1DeQOoqIT34/oardefault.jpg',
+                'https://i.pinimg.com/736x/5d/a5/0c/5da50cac5114d52702e9bddd2daf6dbd.jpg',
+                'https://i.ytimg.com/vi/PmkE2YR9StU/oardefault.jpg',
+                'https://i.pinimg.com/736x/da/7c/1e/da7c1ecea675f458514e2fa65e3d30e6.jpg',
+                'https://i.pinimg.com/736x/59/45/22/5945226c5773410a3bd7c3044e6af8b7.jpg',
+                'https://i.pinimg.com/736x/80/aa/63/80aa6362bdbd9aef5d61a009c7aeb3ba.jpg',
+                'https://i.ytimg.com/vi/-v4Gj-D9j2I/oar2.jpg',
+                'https://i.pinimg.com/736x/5d/b8/5b/5db85b1b3d8847a1b14b9f865a9c73cd.jpg',
+                'https://cdn.oliviamark.com/cdn/c/OME/24-09/OME-D-TT-2VBPNP/1.webp',
+                'https://i.ytimg.com/vi/ZeWeiyzIhgA/oardefault.jpg',
+                'https://i.pinimg.com/736x/08/a8/c1/08a8c151b9ddbb788dae8d5496171062.jpg',
+                'https://i.pinimg.com/736x/41/c2/71/41c271b8ecd599f80468fe0d346b5cb9.jpg',
+                'https://i.pinimg.com/736x/ca/d5/f5/cad5f5ac88801be4c09900f8791aedfe.jpg',
+                'https://i.pinimg.com/736x/ed/24/f5/ed24f571d8223e231db5c19f9bb75c11.jpg',
+                'https://i.pinimg.com/736x/f0/07/67/f007678b1e1dc7fd7b558cb376b248e0.jpg',
+                'https://i.ytimg.com/vi/0vq6k7iNlqs/oar2.jpg',
+                'https://i.ytimg.com/vi/CF7Y1IOQDFs/oardefault.jpg',
+                'https://i.pinimg.com/736x/26/a1/fb/26a1fb096cb9d5f2391a4b5adf9f8020.jpg',
+                'https://i.pinimg.com/736x/90/75/ad/9075adeb7578261c845d8ec7da064b99.jpg',
+                'https://i.pinimg.com/736x/a8/3c/d9/a83cd9b6896385a3c5facec6adccc110.jpg',
+                'https://i.ytimg.com/vi/vL1H30Oa0QQ/oardefault.jpg',
+                'https://i.pinimg.com/736x/15/df/91/15df91bc9c0b10f9611fe2b28d7d9fd4.jpg',
+                'https://i.pinimg.com/736x/b8/dd/f4/b8ddf45ba5e04ee3fbad657c033f6b3c.jpg',
+                'https://i.pinimg.com/736x/11/0f/52/110f529a4a9d2efbfe56c72a3159e4ca.jpg',
+                'https://i.pinimg.com/736x/99/15/67/991567a4937a15db89d799ebed0b7773.jpg',
+                'https://i.ytimg.com/vi/HLzZG3OXl9s/oar.jpg',
+                'https://i.pinimg.com/736x/ea/cb/3d/eacb3d04fe2f42666df1c7fa351df7fc.jpg',
+                'https://i.pinimg.com/736x/a7/cd/4c/a7cd4cf430ac59abff47447d7f33d3f2.jpg',
+                'https://i.pinimg.com/736x/59/45/22/5945226c5773410a3bd7c3044e6af8b7.jpg',
+                'https://i.pinimg.com/736x/a9/0e/6e/a90e6e7f7cd89c5e52cbf81d14d5e15e.jpg',
+            ];
 
-   const randomIndex = Math.floor(Math.random() * images.length);
-    const randomImage = images[randomIndex];
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const randomImage = images[randomIndex];
 
-    // Nastavíme pozadie priamo na `.user-card`
-    const userCard = document.querySelector('.user-card');
-    if (userCard) {
-        userCard.style.backgroundImage = `url('${randomImage}')`;
-        userCard.style.backgroundSize = "cover";
-        userCard.style.backgroundPosition = "center";
-    }
-});
-
-
+            // Nastavenie pozadia s blur
+            const bgElement = document.querySelector('.user-card-bg');
+            if (bgElement) {
+                bgElement.style.backgroundImage = `url('${randomImage}')`;
+            }
+        });
     </script>
 </body>
 </html>
