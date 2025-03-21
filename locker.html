@@ -257,125 +257,11 @@
     <!-- Profile Card -->
     
     <div class="user-card">
-        <img src="https://via.placeholder.com/50" class="user-avatar" id="userAvatar">
-        <div>
-            <h2 id="userName">Loading...</h2>
-            <p>@<span id="userID">loading...</span></p>
-        </div>
+    	<button class="reward-button" onclick="showRewardedAd()">Watch Ad & Earn</button>
     </div>
-
-
-    <!-- Points & Balance Cards -->
-    <div class="balance-container">
-        <div class="balance-card">
-            <h3>Points</h3>
-            <h2 id="reward-count">0</h2>
-        </div>
-        <div class="balance-card">
-            <h3>Balance</h3>
-            <h2>$<span id="balance">0.00</span></h2>
-        </div>
-    </div>
-
-    <button class="reward-button" onclick="showRewardedAd()">Watch Ad & Earn</button>
-
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
-        <a href="#" id="home-button"><i class="fas fa-home"></i>Home</a>
-        <a href="#" id="info-button"><i class="fas fa-info-circle"></i>Info</a>
-        <a href="https://t.me/altcoins101"><i class="fas fa-share-alt"></i>Share</a>
-        <a href="#" id="withdraw-button"><i class="fas fa-user-tie"></i>Withdraw</a>
-    </div>
-
-    <div id="withdraw-section" class="withdraw-section" style="display: none;">
-        <h3>Withdraw Funds</h3>
-        <input type="number" id="withdraw-amount" placeholder="Enter Amount (MIN. $5)">
-        <select id="payment-method">
-            <option value="Manual">Manual</option>
-            <option value="Bkash">BTC</option>
-            <option value="Nagad">ETH</option>
-        </select>
-        <input type="text" id="wallet-number" placeholder="Wallet ID Number">
-        <button id="submit-withdraw">Submit</button>
-    </div>
-
-    <div id="info-section" class="user-card" style="display: none;">
-        <p>This application is designed to allow users to earn money by watching ads.</p>
-        <p>Violating this <a href="https://t.me/altcoins101">policy</a> may result in account suspension.</p>
-        <hr>
-        <p>If you have any complaints or issues :</p>
-        <p>Email: <a href="mailto:author@appreraw.com">author@apprewards.com</a></p>
-    </div>
-
-    <div id="confirmation-message" style="display: none; margin-top: 20px;">
-        <p>Your request is being processed. Please wait. Thank you!</p>
-    </div>
-
+   
     <script>
-        // Hide sections not in use
-        function hideAllSections() {
-            document.getElementById('withdraw-section').style.display = 'none';
-            document.getElementById('info-section').style.display = 'none';
-            document.getElementById('confirmation-message').style.display = 'none'; 
-        }
-
-        // Show only home page content
-        document.getElementById('home-button').addEventListener('click', function() {
-            hideAllSections();
-        });
-
-        document.getElementById('info-button').addEventListener('click', function() {
-            hideAllSections();
-            var infoSection = document.getElementById('info-section');
-            if (infoSection.style.display === 'none') {
-                infoSection.style.display = 'block'; 
-            }
-        });
-
-        document.getElementById('withdraw-button').addEventListener('click', function() {
-            hideAllSections();
-            var withdrawSection = document.getElementById('withdraw-section');
-            if (withdrawSection.style.display === 'none') {
-                withdrawSection.style.display = 'block'; 
-            }
-        });
-
-        document.getElementById('submit-withdraw').addEventListener('click', function(event) {
-            event.preventDefault();
-            document.getElementById('withdraw-section').style.display = 'none';
-            var confirmationMessage = document.getElementById('confirmation-message');
-            confirmationMessage.style.display = 'block';
-        });
-
-        function loadUserData() {
-            if (window.Telegram.WebApp) {
-                let user = window.Telegram.WebApp.initDataUnsafe.user;
-
-                if (user) {
-                    document.getElementById('userName').textContent = user.first_name || "Unknown User";
-                    document.getElementById('userID').textContent = user.username || "No Username";
-                    document.getElementById('userAvatar').src = user.photo_url || "https://via.placeholder.com/50";
-
-                    localStorage.setItem('userName', user.first_name);
-                    localStorage.setItem('userID', user.username);
-                    localStorage.setItem('userAvatar', user.photo_url);
-                }
-            } else {
-                console.log("Telegram WebApp not found!");
-            }
-        }
-
-        // Load User Data on Open
-        loadUserData();
-
-        // Load Saved Data
-        let rewardCount = parseInt(localStorage.getItem('rewardCount')) || 0;  
-        let balance = parseFloat(localStorage.getItem('balance')) || 0.00;  
-
-        document.getElementById('reward-count').textContent = rewardCount;
-        document.getElementById('balance').textContent = balance.toFixed(2);
-
-        function showRewardedAd() {
+       function showRewardedAd() {
             if (typeof show_9034072 === 'function') {
                 show_9034072().then(() => {
                     rewardCount += 1;  
@@ -421,8 +307,6 @@
         }
 
         createBubbles();
-
-	
     </script>
 </body>
 </html>
