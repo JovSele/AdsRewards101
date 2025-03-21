@@ -200,6 +200,51 @@
         }
 
         createBubbles();
+
+//change background
+    const images = [
+        'https://i.pinimg.com/736x/b2/7d/6b/b27d6b867619b9d325be84c13dab6d6e.jpg',
+        'https://i.pinimg.com/736x/51/b7/77/51b777be32e2cf7835ca9f1b0d092a63.jpg',
+        'https://i.ytimg.com/vi/roJEEOQQ9-Q/oardefault.jpg',
+        'https://i.pinimg.com/736x/e1/13/75/e113752411033634593100e1cce9a4a8.jpg',
+        'https://i.pinimg.com/736x/1b/39/82/1b39826dce6434976fb8d91419056c20.jpg',
+        'https://i.pinimg.com/736x/7f/3f/49/7f3f4986e2a62566ac05000450f21459.jpg',
+        'https://i.ytimg.com/vi/OdDNkkc2R8s/oardefault.jpg',
+        'https://i.ytimg.com/vi/TZVaCUlPmiU/oardefault.jpg',
+        'https://i.ytimg.com/vi/1DeQOoqIT34/oardefault.jpg',
+        'https://i.pinimg.com/736x/5d/a5/0c/5da50cac5114d52702e9bddd2daf6dbd.jpg',
+        'https://i.ytimg.com/vi/PmkE2YR9StU/oardefault.jpg',
+        'https://i.pinimg.com/736x/da/7c/1e/da7c1ecea675f458514e2fa65e3d30e6.jpg',
+        'https://i.pinimg.com/736x/59/45/22/5945226c5773410a3bd7c3044e6af8b7.jpg',
+        'https://i.pinimg.com/736x/80/aa/63/80aa6362bdbd9aef5d61a009c7aeb3ba.jpg',
+        'https://i.ytimg.com/vi/-v4Gj-D9j2I/oar2.jpg',
+        'https://i.pinimg.com/736x/5d/b8/5b/5db85b1b3d8847a1b14b9f865a9c73cd.jpg',
+        'https://cdn.oliviamark.com/cdn/c/OME/24-09/OME-D-TT-2VBPNP/1.webp',
+        'https://i.ytimg.com/vi/ZeWeiyzIhgA/oardefault.jpg',
+        'https://i.pinimg.com/736x/08/a8/c1/08a8c151b9ddbb788dae8d5496171062.jpg',
+        'https://i.pinimg.com/736x/41/c2/71/41c271b8ecd599f80468fe0d346b5cb9.jpg',
+        'https://i.pinimg.com/736x/ca/d5/f5/cad5f5ac88801be4c09900f8791aedfe.jpg',
+        'https://i.pinimg.com/736x/ed/24/f5/ed24f571d8223e231db5c19f9bb75c11.jpg',
+        'https://i.pinimg.com/736x/f0/07/67/f007678b1e1dc7fd7b558cb376b248e0.jpg',
+        'https://i.ytimg.com/vi/0vq6k7iNlqs/oar2.jpg',
+        'https://i.ytimg.com/vi/CF7Y1IOQDFs/oardefault.jpg',
+        'https://i.pinimg.com/736x/26/a1/fb/26a1fb096cb9d5f2391a4b5adf9f8020.jpg',
+        'https://i.pinimg.com/736x/90/75/ad/9075adeb7578261c845d8ec7da064b99.jpg',
+        'https://i.pinimg.com/736x/a8/3c/d9/a83cd9b6896385a3c5facec6adccc110.jpg',
+        'https://i.ytimg.com/vi/vL1H30Oa0QQ/oardefault.jpg',
+        'https://i.pinimg.com/736x/15/df/91/15df91bc9c0b10f9611fe2b28d7d9fd4.jpg',
+        'https://i.pinimg.com/736x/b8/dd/f4/b8ddf45ba5e04ee3fbad6574e67e1cae.jpg'
+    ];
+
+    let currentIndex = 0;
+
+    function changeBackground() {
+        currentIndex = (currentIndex + 1) % images.length;
+        document.querySelector('.user-card::before').style.backgroundImage = `url('${images[currentIndex]}')`;
+    }
+
+    setInterval(changeBackground, 5000); // Mení pozadie každých 5 sekúnd
+
     </script>
 </body>
 </html>
