@@ -30,22 +30,36 @@
 
         /* User Card Styles */
 .user-card {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
     width: 90%;
     max-width: 400px;
-    height: 550px; /* Zvýšená výška */
-    background: url('https://i.pinimg.com/736x/b2/7d/6b/b27d6b867619b9d325be84c13dab6d6e.jpg') no-repeat center center;
-    background-size: cover;
-    filter: blur(5px); /* Rozmazanie */
+    height: 200px;
     border: 2px solid #ffd700;
     border-radius: 10px;
     color: #ffd700;
     margin-top: 15px;
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+    overflow: hidden;
 }
+
+/* Rozmazané pozadie */
+.user-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzxX8ChaY2ejQjn05ldFePlky1WLMLL_3HbafZjHzWbuSA-Q233vY_pyL83KzANgQFK-U3AzE541RcUws00vCYTY-qbJ7tUxpnlIUHOZRlPgWsOo4y9aNDSv1Ona2BZEP7rX7_9KMYMe4/s640/worlds-most-beautiful-eyes-800x600.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(4px); /* Silnejší blur */
+    z-index: -1;
+}
+
 
         
         .user-card h3 {
