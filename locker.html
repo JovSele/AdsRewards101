@@ -87,6 +87,32 @@
             border: 0.5px solid #ffd700;
             margin: 10px 0;
         }
+.reward-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Priestor medzi ikonou a textom */
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 12px 20px;
+    color: #1a0033;
+    background: #ffd700;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.reward-button i {
+    font-size: 1.4em;
+}
+
+.reward-button:hover {
+    background: #fff700;
+    color: #000;
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
+}
 
 
         /* Bubbles Effect */
@@ -123,7 +149,9 @@
     <!-- Profile Card -->
     
     <div class="user-card">
-    	<button class="reward-button" onclick="showRewardedAd()">I´m not robot</button>
+    	<button class="reward-button" onclick="showRewardedAd()">
+            <i class="fas fa-robot"></i>I´m not robot
+        </button>
     </div>
    
     <script>
