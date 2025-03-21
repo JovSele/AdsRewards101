@@ -202,7 +202,8 @@
         createBubbles();
 
 //change background
-    const images = [
+        document.addEventListener("DOMContentLoaded", function () {
+        const images = [
         'https://i.pinimg.com/736x/b2/7d/6b/b27d6b867619b9d325be84c13dab6d6e.jpg',
         'https://i.pinimg.com/736x/51/b7/77/51b777be32e2cf7835ca9f1b0d092a63.jpg',
         'https://i.ytimg.com/vi/roJEEOQQ9-Q/oardefault.jpg',
@@ -236,14 +237,19 @@
         'https://i.pinimg.com/736x/b8/dd/f4/b8ddf45ba5e04ee3fbad6574e67e1cae.jpg'
     ];
 
-    let currentIndex = 0;
+    const randomIndex = Math.floor(Math.random() * images.length);
+        const randomImage = images[randomIndex];
 
-    function changeBackground() {
-        currentIndex = (currentIndex + 1) % images.length;
-        document.querySelector('.user-card::before').style.backgroundImage = `url('${images[currentIndex]}')`;
-    }
+        // Dynamicky pridáme štýl do <head>
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .user-card::before {
+                background-image: url('${randomImage}') !important;
+            }
+        `;
+        document.head.appendChild(style);
+    });
 
-    setInterval(changeBackground, 5000); // Mení pozadie každých 5 sekúnd
 
     </script>
 </body>
